@@ -1,0 +1,45 @@
+﻿@page "/todo"
+
+<h2>Eisenhower matrix</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="m-0 p-0"></th>
+            <th>Urgent</th>
+            <th>Not urgent</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="m-0 p-0 text-center" role="rowheader">
+                <span class="fw-bold py-3 vertical-text">
+                    Important
+                </span>
+            </td>
+            <td>
+                <TodoCategory />
+            </td>
+            <td>
+                <TodoCategory />
+            </td>
+        </tr>
+        <tr>
+            <td class="m-0 p-0 text-center" role="rowheader">
+                <span class="fw-bold py-3 vertical-text">
+                    Not important
+                </span>
+            </td>
+            <td>
+                <TodoCategory />
+            </td>
+            <td>
+                <TodoCategory />
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+
+}
