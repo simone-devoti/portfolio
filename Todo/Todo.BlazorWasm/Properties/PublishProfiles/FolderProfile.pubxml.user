@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\utente\Documents\portfolio\Todo\Todo.BlazorWasm\bin\Release\net6.0\browser-wasm\publish\</_PublishTargetUrl>
-    <History>True|2022-05-30T16:38:31.3003484Z;True|2022-05-30T16:18:33.1743519+02:00;</History>
+    <History>True|2022-05-30T19:02:12.0505018Z;True|2022-05-30T18:38:31.3003484+02:00;True|2022-05-30T16:18:33.1743519+02:00;</History>
   </PropertyGroup>
 </Project>
