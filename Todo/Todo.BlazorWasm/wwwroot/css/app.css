@@ -17,6 +17,20 @@ html, body {
     transform:rotate(180deg);
 }
 
+.todoCircle {
+    border: 3px solid var(--bs-primary);
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50%;
+}
+
+    .todoCircle:hover {
+        background: url("../check-solid.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
