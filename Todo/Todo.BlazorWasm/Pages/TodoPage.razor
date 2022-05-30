@@ -1,6 +1,14 @@
 ﻿@page "/todo"
 
+@inject TodosFactory _todosFactory
+
 <h2>Eisenhower matrix</h2>
+
+@if(todos is null)
+{
+    <span>Loading...</span>
+    return;
+}
 
 <table class="table table-bordered">
     <thead>
@@ -18,10 +26,10 @@
                 </span>
             </td>
             <td>
-                <TodoCategory />
+                <TodoCategory Title="Do" Todos="todos.Do.Todos"/>
             </td>
             <td>
-                <TodoCategory />
+                <TodoCategory Title="Schedule" Todos="todos.Schedule.Todos"/>
             </td>
         </tr>
         <tr>
@@ -31,15 +39,22 @@
                 </span>
             </td>
             <td>
-                <TodoCategory />
+                <TodoCategory Title="Delegate" Todos="todos.Delegate.Todos"/>
             </td>
             <td>
-                <TodoCategory />
+                <TodoCategory Title="Eliminate" Todos="todos.Eliminate.Todos"/>
             </td>
         </tr>
     </tbody>
 </table>
 
-@code {
+@code { 
+    private Todos? todos;
 
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        todos = await _todosFactory.GetTodosAsync();
+    }
 }
