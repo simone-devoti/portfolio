@@ -1,10 +1,10 @@
 {
-  "name": "Todo.BlazorWasm",
-  "short_name": "Todo.BlazorWasm",
+  "name": "Todo by Simone Devoti",
+  "short_name": "Todo",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "theme_color": "#212529",
   "prefer_related_applications": false,
   "icons": [
     {

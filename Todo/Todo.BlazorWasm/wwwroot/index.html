@@ -4,27 +4,84 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Todo.BlazorWasm</title>
+    <title>Todo</title>
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
-    <link href="Todo.BlazorWasm.styles.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+
+    <style>
+        /* This CSS is specific to the current HTML.
+            Note that this snippet only contains the necessary changes and not the full Blazor app template */
+        .loading-section {
+            text-align: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .loading-section h2 {
+                color: var(--bs-primary);
+            }
+
+        .loader-dot {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: var(--bs-primary);
+            display: inline-block;
+            -webkit-animation: grow 2.1s infinite ease-in-out both;
+            animation: grow 2.1s infinite ease-in-out both;
+        }
+
+            .loader-dot.dot1 {
+                -webkit-animation-delay: -0.96s;
+                animation-delay: -0.96s;
+            }
+
+            .loader-dot.dot2 {
+                -webkit-animation-delay: -0.48s;
+                animation-delay: -0.48s;
+            }
+
+        @-webkit-keyframes grow {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0)
+            }
+
+            40% {
+                -webkit-transform: scale(1.0)
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="loading-section">
+            <h2>Todo By Simone Devoti</h2>
+            <div class="short-description">Loading in progress...</div>
+            <div class="loader mt-5">
+                <div class="loader-dot dot1"></div>
+                <div class="loader-dot dot2"></div>
+                <div class="loader-dot dot3"></div>
+            </div>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>

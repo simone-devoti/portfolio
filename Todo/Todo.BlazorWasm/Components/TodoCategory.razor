@@ -1,0 +1,44 @@
+﻿@inject IJSRuntime _js
+
+<div class="d-flex justify-content-between bg-light rounded-2 px-2">
+    <div class="fs-2">@Title</div>
+    <button type="button" class="btn text-primary" @onclick="AddAsync">+</button>
+</div>
+
+@if (Todos is not null)
+{
+    for (var i = 0; i < Todos.Count; i++)
+    {
+        var j = i;
+        <button class="btn text-primary
+                        border border-2
+                      w-100 text-start my-1"
+                @onclick="() => RemoveAsync(j)">
+              <span class="oi oi-check" aria-hidden="true"></span>
+              @Todos[i]
+        </button>
+    }
+}
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public ObservableCollection<string>? Todos { get; set; }
+
+    private async Task AddAsync()
+    {
+        var newTodo = await _js.InvokeAsync<string>("jsPrompt", "Insert your new ToDo");
+
+        if (string.IsNullOrWhiteSpace(newTodo))
+            return;
+
+        Todos.Add(newTodo);
+    }
+
+    private async Task RemoveAsync(int index)
+    {
+        Todos.RemoveAt(index);
+    }
+}

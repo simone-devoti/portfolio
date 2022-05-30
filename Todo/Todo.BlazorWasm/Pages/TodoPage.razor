@@ -1,0 +1,60 @@
+﻿@page "/todo"
+
+@inject TodosFactory _todosFactory
+
+<h2>Eisenhower matrix</h2>
+
+@if(todos is null)
+{
+    <span>Loading...</span>
+    return;
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="m-0 p-0"></th>
+            <th>Urgent</th>
+            <th>Not urgent</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="m-0 p-0 text-center" role="rowheader">
+                <span class="fw-bold py-3 vertical-text">
+                    Important
+                </span>
+            </td>
+            <td>
+                <TodoCategory Title="Do" Todos="todos.Do.Todos"/>
+            </td>
+            <td>
+                <TodoCategory Title="Schedule" Todos="todos.Schedule.Todos"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="m-0 p-0 text-center" role="rowheader">
+                <span class="fw-bold py-3 vertical-text">
+                    Not important
+                </span>
+            </td>
+            <td>
+                <TodoCategory Title="Delegate" Todos="todos.Delegate.Todos"/>
+            </td>
+            <td>
+                <TodoCategory Title="Eliminate" Todos="todos.Eliminate.Todos"/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@code { 
+    private Todos? todos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        todos = await _todosFactory.GetTodosAsync();
+    }
+}
